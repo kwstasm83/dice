@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="starter">
+
+    <ion-pane>
+      <ion-header-bar class="bar-stable bar-dark">
+        <h1 class="title">MTG Life counder</h1>
+      </ion-header-bar>
+      <ion-content>
+       <div class="card"> 
+        <h2> 
+         <center>  
+          <div id="life"> 
+          20 
+          </div>
+         </center> 
+        </h2> 
+       </div>
+       <div class="card"> 
+       <div class="button-bar">
+         <a class="button" onclick="minplus('-1')">-1</a>
+         <a class="button" onclick="minplus('+1')">+1</a>
+       </div>
+       <br/>
+       <div class="button-bar">
+         <a class="button" onclick="minplus('-5')">-5</a>
+         <a class="button" onclick="minplus('+5')">+5</a>
+       </div>
+       <br/>
+       <br/>
+       <div class="button-bar">
+         <a class="button" onclick ="randomdiceroll()">Roll dice</a>
+         <a id="diceroll" class="button" onclick="roll()" >0</a>
+       </div>
+       <br/>
+       <br/>
+       <center><a class="button"onclick ="reset()">reset</a></center>
+       </div>
+      </ion-content>
+    </ion-pane>
+       <script>
+       function minplus(bot) {
+        bot = parseInt(bot);
+        correntlife = parseInt(document.getElementById("life").innerHTML) + bot;
+          if (correntlife<0){ correntlife=0;}
+
+        document.getElementById("life").innerHTML = correntlife; 
+        }
+       function randomdiceroll() {
+        document.getElementById("diceroll").innerHTML = Math.floor((Math.random() * 6) + 1);
+
+       }
+       function roll() { 
+        correntlife = parseInt(document.getElementById("life").innerHTML) + parseInt(document.getElementById("diceroll").innerHTML);
+
+        document.getElementById("life").innerHTML = correntlife; 
+          }
+       function reset() { 
+
+        document.getElementById("life").innerHTML = "20"; 
+        }
+       </script> 
+  </body>
+</html>
